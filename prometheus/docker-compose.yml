@@ -1,0 +1,37 @@
+version: '3.7'
+
+services:
+  prometheus:
+    image: ubuntu/prometheus
+    volumes:
+      - ./prometheus_config/:/etc/prometheus/
+      - ./prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+      - '--web.console.templates=/usr/share/prometheus/consoles'
+    ports:
+      - 9090:9090
+    restart: always
+
+#  loki:
+#    image: grafana/loki:2.9.0
+#    container_name: loki
+#    restart: unless-stopped
+#    ports:
+#      - "3100:3100"
+#    command: -config.file=/etc/loki/local-config.yaml
+#    volumes:
+#      - ./prometheus_config/loki-config.yaml:/etc/loki/local-config.yaml
+
+#  promtail:
+#    image: grafana/promtail:2.9.0
+#    container_name: promtail
+#    restart: unless-stopped
+#    volumes:
+#      - /var/log:/var/log
+#      - ./prometheus_config/promtail-config.yml:/etc/promtail/config.yml
+#    command: -config.file=/etc/promtail/config.yml
+
+

@@ -1,0 +1,74 @@
+# my global config
+global:
+  scrape_interval:     15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
+  # scrape_timeout is set to the global default (10s).
+
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+  - static_configs:
+    - targets:
+      # - alertmanager:9093
+
+# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
+rule_files:
+  # - "first_rules.yml"
+  # - "second_rules.yml"
+
+# A scrape configuration containing exactly one endpoint to scrape:
+# Here it's Prometheus itself.
+scrape_configs:
+  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+  - job_name: 'prometheus'
+
+    # metrics_path defaults to '/metrics'
+    # scheme defaults to 'http'.
+
+    static_configs:
+    - targets: ['localhost:9090']
+
+  - job_name: 'Nexle Proxy11'
+    scrape_interval: 5s
+    metrics_path: '/metrics'
+    static_configs:
+    - targets: ['192.168.45.11:9113']
+
+  - job_name: 'Dev Nexle'
+    scrape_interval: 5s
+    static_configs:
+    - targets: ['node-exporter.devcaprover.nexlesoft.com']
+      labels:
+        service: 'devcaprover'
+    - targets: ['node-exporter.develop.nexlesoft.com']
+      labels:
+        service: 'develop'
+    - targets: ['node-exporter.chat.demo.nexlesoft.com']
+      labels:
+        service: 'chat_demo_dts'
+#line47
+
+  - job_name: devcaprover-nexle
+    scrape_interval: 5s
+    static_configs:
+    - targets: [192.168.45.59:8080]
+
+  - job_name: develop-nexle
+    scrape_interval: 15s
+    static_configs:
+    - targets: [192.168.46.22:8888]
+
+  - job_name: prod-cadvisor-nexlesoft
+    scrape_interval: 2s
+    static_configs:
+    - targets: [13.213.119.148:30002]
+
+  - job_name: 'AWS Prod'
+    scrape_interval: 5s
+    static_configs:
+    - targets: ['nexlesoft.com:30001']
+      labels:
+        service: 'nexlesoft.com'
+    - targets: ['data.beahub.com:5433']
+      labels:
+        service: 'data beahub'
