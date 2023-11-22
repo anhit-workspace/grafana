@@ -52,6 +52,6 @@ App nào nếu không sử dụng có thể bỏ.
 File config mẫu của promtail và prometheus nằm trong ./prometheus
 
 
-### ${\color{blue}Link /tham /khảo}$ 
+### ${\color{blue}Link \space tham \space khảo}$ 
 - Link tham khảo: https://grafana.com/docs/grafana/latest/setup-grafana/installation/docker/
 - Repo mẫu: https://github.com/hedeesaa/Docker-Compose-nginx-Django-prometheus-grafana-nginx-exporter 
