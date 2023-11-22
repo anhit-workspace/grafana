@@ -4,7 +4,7 @@ Một số link tham khảo
 - Link tham khảo: https://grafana.com/docs/grafana/latest/setup-grafana/installation/docker/
 - Repo mẫu: https://github.com/hedeesaa/Docker-Compose-nginx-Django-prometheus-grafana-nginx-exporter 
 ### <span style="color:#00bf3a"></span> Step 1:</span> Git clone this repo and setup 
-$${\color{blue}Bluee \{red}sdasd}$$
+$${\color{blue}Bluee \color{red}sdasd}$$
 Setup <font style="color:#eb09ff">Grafana</font> with docker-compose
 ```
 docker-compose up -d grafana
