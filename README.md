@@ -5,18 +5,18 @@ Một số link tham khảo
 - Repo mẫu: https://github.com/hedeesaa/Docker-Compose-nginx-Django-prometheus-grafana-nginx-exporter 
 ### <span style="color:#00bf3a"></span> Step 1:</span> Git clone this repo and setup 
 
-Setup $${\color{green}Grafana}$$ with docker-compose
+Setup ${\color{green}Grafana}$ with docker-compose
 ```
 docker-compose up -d grafana
 ```
 
-Setp $${\color{green}Grafana}$$ with bashfile
+Setp ${\color{green}Grafana}$ with bashfile
 clone
 ```
 git clone https://github.com/anhit-workspace/grafana.git
 ```
 
-Install $${\color{green}Grafana}$$ with bash file
+Install ${\color{green}Grafana}$ with bash file
 ```
 ./grafana-start.sh
 ```
@@ -28,19 +28,19 @@ or
 ```
 docker run -d -p 3000:3000 --name=grafana --volume "/path/grafana_data:/var/lib/grafana" grafana/grafana-enterprise
 ```
-Việc map volume để đảm bảo data $${\color{green}Grafana}$$ dược lưu lại trên host.
+Việc map volume để đảm bảo data ${\color{green}Grafana}$ dược lưu lại trên host.
 
-Tuy nhiên cần có dữ liệu mẫu trước của $${\color{green}Grafana}$$.
+Tuy nhiên cần có dữ liệu mẫu trước của ${\color{green}Grafana}$.
 
-Folder $${\color{green}Grafana}$$ data default path: `/var/lib/grafana`, có thể dùng grafana data trong repo hiện tại: `grafana_data`
+Folder ${\color{green}Grafana}$ data default path: `/var/lib/grafana`, có thể dùng grafana data trong repo hiện tại: `grafana_data`
 
-Trường hợp không có thì có thể copy nó từ trong container $${\color{green}Grafana}$$ bằng cách.
+Trường hợp không có thì có thể copy nó từ trong container ${\color{green}Grafana}$ bằng cách.
 ```
 docker cp container_name:/var/lib/grafana My_Path/grafana_data
 ```
 
 # Setup docker-compose
-Cài đặt docker-compose bao gồm list các app liên quan $${\color{green}Grafana}$$
+Cài đặt docker-compose bao gồm list các app liên quan ${\color{green}Grafana}$
 
 - prometheus
 - loki
