@@ -1,8 +1,5 @@
 # Setup Monitoring Grafana & prometheus
 
-Một số link tham khảo
-- Link tham khảo: https://grafana.com/docs/grafana/latest/setup-grafana/installation/docker/
-- Repo mẫu: https://github.com/hedeesaa/Docker-Compose-nginx-Django-prometheus-grafana-nginx-exporter 
 ### ${\color{blue}Step 1:}$ Git clone this repo and setup 
 
 clone
@@ -53,3 +50,8 @@ Cài đặt docker-compose bao gồm list các app liên quan ${\color{green}Gra
 App nào nếu không sử dụng có thể bỏ.
 
 File config mẫu của promtail và prometheus nằm trong ./prometheus
+
+
+### ${\color{blue}Link tham khảo}$ 
+- Link tham khảo: https://grafana.com/docs/grafana/latest/setup-grafana/installation/docker/
+- Repo mẫu: https://github.com/hedeesaa/Docker-Compose-nginx-Django-prometheus-grafana-nginx-exporter 
