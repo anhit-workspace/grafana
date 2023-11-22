@@ -5,16 +5,19 @@ Một số link tham khảo
 - Repo mẫu: https://github.com/hedeesaa/Docker-Compose-nginx-Django-prometheus-grafana-nginx-exporter 
 ### ${\color{blue}Step 1:}$ Git clone this repo and setup 
 
-Setup ${\color{green}Grafana}$ with docker-compose
-```
-docker-compose up -d grafana
-```
-
-Setp ${\color{green}Grafana}$ with bashfile
 clone
 ```
 git clone https://github.com/anhit-workspace/grafana.git
 ```
+### ${\color{blue}Step 2:}$ Setup Grafana
+
+- With docker-compose
+
+```
+docker-compose up -d grafana
+```
+
+- With bash file
 
 Install ${\color{green}Grafana}$ with bash file
 ```
@@ -39,7 +42,7 @@ Trường hợp không có thì có thể copy nó từ trong container ${\color
 docker cp container_name:/var/lib/grafana My_Path/grafana_data
 ```
 
-# Setup docker-compose
+### ${\color{blue}Step 3:}$ Setup other monitoring with docker-compose
 Cài đặt docker-compose bao gồm list các app liên quan ${\color{green}Grafana}$
 
 - prometheus
