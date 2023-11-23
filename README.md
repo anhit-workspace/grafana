@@ -1,12 +1,12 @@
 # Setup Monitoring Grafana & prometheus
 
-### ${\color{blue}Step 1:}$ Git clone this repo and setup 
+### ${\color{lightgreen}Step 1:}$ Git clone this repo and setup 
 
 clone
 ```
 git clone https://github.com/anhit-workspace/grafana.git
 ```
-### ${\color{blue}Step 2:}$ Setup Grafana
+### ${\color{lightgreen}Step 2:}$ Setup Grafana enterprise
 
 - With docker-compose
 
@@ -14,32 +14,39 @@ git clone https://github.com/anhit-workspace/grafana.git
 docker-compose up -d grafana
 ```
 
-- With bash file
+with bash file
 
 Install ${\color{green}Grafana}$ with bash file
 ```
 ./grafana-start.sh
 ```
-Data file on this folder:
-```
-./grafana_data
-```
 or
 ```
 docker run -d -p 3000:3000 --name=grafana --volume "/path/grafana_data:/var/lib/grafana" grafana/grafana-enterprise
 ```
-Việc map volume để đảm bảo data ${\color{green}Grafana}$ dược lưu lại trên host.
 
-Tuy nhiên cần có dữ liệu mẫu trước của ${\color{green}Grafana}$.
+<b>P/S:</b> Khi build Grafana enterprise trong tài liệu hiện của mình thì grafana sẽ được map ra thư mục `grafana_data`. Bởi vậy cho nên, mình cần data mẫu sẵn.
 
-Folder ${\color{green}Grafana}$ data default path: `/var/lib/grafana`, có thể dùng grafana data trong repo hiện tại: `grafana_data`
+Tuy nhiên mình cũng có thể không map volume  và build Grafana enterprise nhanh chóng với lệnh.
+```
+docker run -d -p 3000:3000 --name=grafana grafana/grafana-enterprise
+```
+ or copy grafana data từ container bên trong ra rồi build lại theo docker-compose hoặc bash file có trong tài liệu này.
 
-Trường hợp không có thì có thể copy nó từ trong container ${\color{green}Grafana}$ bằng cách.
+Cách copy nó từ trong container ${\color{green}Grafana}$:
 ```
 docker cp container_name:/var/lib/grafana My_Path/grafana_data
 ```
 
-### ${\color{blue}Step 3:}$ Setup other monitoring with docker-compose
+### ${\color{lightgreen}Step 3:}$ Setup Prometheus
+```
+docker-compose up -d prometheus
+```
+Tương tự, prometheus cũng cần map config file ra để đảm bảo file config được lưu trữ khi gặp sự cố hoặc rebuild lại prometheus.
+
+Config file: `prometheus/prometheus.yml`
+
+### ${\color{lightgreen}Step 4:}$ Setup other monitoring with docker-compose
 Cài đặt docker-compose bao gồm list các app liên quan ${\color{green}Grafana}$
 
 - prometheus
@@ -52,6 +59,7 @@ App nào nếu không sử dụng có thể bỏ.
 File config mẫu của promtail và prometheus nằm trong ./prometheus
 
 
-### ${\color{blue}Link \space tham \space khảo}$ 
+### ${\color{blue}Link}$ tham khảo
 - Link tham khảo: https://grafana.com/docs/grafana/latest/setup-grafana/installation/docker/
 - Repo mẫu: https://github.com/hedeesaa/Docker-Compose-nginx-Django-prometheus-grafana-nginx-exporter 
+- Hướng dẫn config add container to promtail: https://community.grafana.com/t/add-container-name-to-promtail-docker-logs/58572
